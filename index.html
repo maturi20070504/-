@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>なやみの木 🌸</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Yu Gothic",sans-serif;
+    background:linear-gradient(to bottom,#fff0f6,#ffe4ee);
+    color:#444;
+}
+
+header{
+    text-align:center;
+    padding:50px 20px;
+}
+
+header h1{
+    color:#ff6fa8;
+    font-size:3rem;
+}
+
+header p{
+    margin-top:10px;
+    color:#777;
+}
+
+.hero{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    margin:20px 0;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:#ff6fa8;
+    margin-bottom:15px;
+}
+
+textarea{
+    width:100%;
+    height:120px;
+    padding:15px;
+    border:2px solid #ffc2d8;
+    border-radius:15px;
+    resize:none;
+}
+
+button{
+    background:#ff6fa8;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
+    margin-top:15px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.post{
+    background:#fff7fb;
+    border-left:5px solid #ff9ec4;
+    padding:15px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+.test-btn{
+    display:block;
+    width:100%;
+    margin:8px 0;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#888;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌸 なやみの木 🌸</h1>
+    <p>ひとりで抱え込まず、ここで話してみよう。</p>
+</header>
+
+<div class="hero">
+
+    <div class="card">
+        <h2>📝 匿名お悩み投稿</h2>
+
+        <textarea id="nayami"
+        placeholder="恋愛・友達・学校・家族など、なんでも書いてね🌷"></textarea>
+
+        <button onclick="sendPost()">投稿する</button>
+
+        <div id="posts"></div>
+    </div>
+
+    <div class="card">
+        <h2>🔮 心理テスト</h2>
+
+        <p>森で動物を見つけました。どれを選ぶ？</p>
+
+        <button class="test-btn" onclick="showResult('🐰 恋愛に慎重なタイプ')">🐰 うさぎ</button>
+
+        <button class="test-btn" onclick="showResult('🐱 マイペースタイプ')">🐱 ねこ</button>
+
+        <button class="test-btn" onclick="showResult('🐶 一途タイプ')">🐶 いぬ</button>
+
+        <button class="test-btn" onclick="showResult('🦊 ミステリアスタイプ')">🦊 きつね</button>
+
+        <p id="result" style="margin-top:15px;font-weight:bold;"></p>
+    </div>
+
+    <div class="card">
+        <h2>♈ 今日の星座コーナー</h2>
+
+        <p>🌟 おひつじ座：挑戦すると良い日！</p>
+        <p>🌟 おうし座：友達との時間を大切に。</p>
+        <p>🌟 ふたご座：うれしい連絡が来るかも♪</p>
+        <p>🌟 かに座：ゆっくり休むのがおすすめ。</p>
+    </div>
+
+</div>
+
+<footer>
+    🌳 なやみの木 © 2026
+</footer>
+
+<script>
+function sendPost(){
+    let text = document.getElementById("nayami").value;
+
+    if(text.trim() === ""){
+        alert("お悩みを入力してね！");
+        return;
+    }
+
+    let post = document.createElement("div");
+    post.className = "post";
+    post.innerHTML =
+    "<strong>🌸 匿名さん</strong><br>" + text;
+
+    document.getElementById("posts").prepend(post);
+
+    document.getElementById("nayami").value = "";
+}
+
+function showResult(result){
+    document.getElementById("result").innerHTML =
+    "あなたは「" + result + "」です✨";
+}
+</script>
+
+</body>
+</html>
